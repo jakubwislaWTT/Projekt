@@ -18,7 +18,7 @@ app.get('/allStock/:id', (req, res) => {
 });
 
 app.listen(3000, () => {
-    console.log("serwer dziala na procie 3000");
+    console.log("serwer dziala na porcie 3000");
 });
 
 
