@@ -14,7 +14,7 @@ public class Main {
 
         JSONParser parser = new JSONParser();
 
-        URL url = new URL("http://127.0.0.1:3000/AllCars");
+        URL url = new URL("http://127.0.0.1:3000");
 
         try (InputStream input = url.openStream()){
             InputStreamReader isr = new InputStreamReader(input);
