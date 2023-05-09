@@ -25,7 +25,3 @@ app.get('/allVehicles', (req, res) => {
 app.listen(3000, () => {
     console.log("serwer dziala na procie 3000");
 });
-
-
-
-
