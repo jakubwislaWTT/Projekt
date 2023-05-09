@@ -13,13 +13,16 @@ app.get('/index.html/:id', (req, res) => {
     if (!car) {
         res.send('Samochód nie został znaleziony'); // zwraca błąd gdy samochód nie został znaleziony
     } else {
-        let car_id = document.querySelector("mid-box1");
-       // res.send(print_car=car.id); // wyświetla informacje o samochodzie
-         res.send(`Model: ${car.model}, rok produkcji: ${car.modelYear}, moc: ${car.power}, kolor: ${car.color}`);
+        const car_id = document.querySelector("mid-box1");
+        res.send(print_car=car.id); // wyświetla informacje o samochodzie
+      //   res.send(`Model: ${car.model}, rok produkcji: ${car.modelYear}, moc: ${car.power}, kolor: ${car.color}`);
     }
-
-
 });
+
 app.listen(3000, () => {
     console.log("serwer dziala na procie 3000");
 });
+
+
+
+
