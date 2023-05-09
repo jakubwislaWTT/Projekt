@@ -4,7 +4,7 @@ const app = express();
 const fs = require('fs');
 app.use(express.static(__dirname));//funkcja konczy serwerowania plikow
 
-app.get('/index.html/:id', (req, res) => {
+app.get('/:id', (req, res) => {
     const carsData = fs.readFileSync('./data.json');
     console.log("siema")
     const cars = JSON.parse(carsData);
@@ -14,8 +14,13 @@ app.get('/index.html/:id', (req, res) => {
         res.send('Samochód nie został znaleziony'); // zwraca błąd gdy samochód nie został znaleziony
     } else {
         const car_id = document.querySelector("mid-box1");
-        res.send(print_car=car.id); // wyświetla informacje o samochodzie
-      //   res.send(`Model: ${car.model}, rok produkcji: ${car.modelYear}, moc: ${car.power}, kolor: ${car.color}`);
+        const car_model = document.querySelector("mid-box2");
+        const car_modelYear = document.querySelector("mid-box3");
+        const car_power = document.querySelector("mid-box4");
+        const car_color = document.querySelector("mid-box5");
+       // res.send(print_car=car.id); // wyświetla informacje o samochodzie
+         res.send(car_id=car.id);
+         //res.send(`car_id: ${car.model}, rok produkcji: ${car.modelYear}, moc: ${car.power}, kolor: ${car.color}`);
     }
 });
 
