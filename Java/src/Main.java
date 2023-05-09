@@ -34,7 +34,6 @@ public class Siema
 
     private static void parseEmployeeObject(JSONObject employee)
     {
-
         JSONObject employeeObject = (JSONObject) employee.get("employee");
 
         String firstName = (String) employeeObject.get("firstName");
