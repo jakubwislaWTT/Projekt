@@ -1,23 +1,48 @@
-import java.net.*;
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
-public class Main {
-    public static void main(String[] args) {
-        try {
-            URL url = new URL("http://localhost:3000/allStock");
-            URLConnection conn = url.openConnection();
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
-            }
-            in.close();
+public class Siema
+{
+    public static void main(String[] args)
+    {
 
-            System.out.println(response.toString());
-        } catch (Exception e) {
-            System.out.println("Wystąpił błąd: " + e.getMessage());
+        JSONParser jsonParser = new JSONParser();
+
+        try (FileReader reader = new FileReader("employees.json"))
+        {
+            Object obj = jsonParser.parse(reader);
+
+            JSONArray employeeList = (JSONArray) obj;
+            System.out.println(employeeList);
+
+            employeeList.forEach( emp -> parseEmployeeObject( (JSONObject) emp ) );
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
+    }
+
+    private static void parseEmployeeObject(JSONObject employee)
+    {
+        JSONObject employeeObject = (JSONObject) employee.get("employee");
+
+        String firstName = (String) employeeObject.get("firstName");
+        System.out.println(firstName);
+
+        String lastName = (String) employeeObject.get("lastName");
+        System.out.println(lastName);
+
+        String website = (String) employeeObject.get("website");
+        System.out.println(website);
     }
 }
