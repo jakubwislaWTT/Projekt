@@ -17,8 +17,8 @@ public class VehicleApp {
         List<Vehicle> vehicles = new Gson().fromJson(json, new TypeToken<List<Vehicle>>() {}.getType());
 
         Optional<Vehicle> mostPowerfulVehicle = vehicles.stream()
-                .max(Comparator.comparingInt(Vehicle::getEnginePower));
-        System.out.println("Najmocniejsze auto: " + mostPowerfulVehicle.get().getName());
+                .max(Comparator.comparingInt(Vehicle::getPower));
+        System.out.println("Najmocniejsze auto: " + mostPowerfulVehicle.get().getModel());
 
         Map<String, List<Vehicle>> vehiclesByColor = vehicles.stream()
                 .collect(Collectors.groupingBy(Vehicle::getColor));
@@ -29,7 +29,7 @@ public class VehicleApp {
                 .collect(Collectors.toList());
         sortedVehicles.forEach(System.out::println);
 
-        vehicles.forEach(vehicle -> System.out.println(vehicle.getName() + " - " + vehicle.getPrice()));
+        vehicles.forEach(vehicle -> System.out.println(vehicle.getModel() + " - " + vehicle.getPrice()));
     }
 
     private static String getJSONFromAPI() throws Exception {
@@ -56,14 +56,14 @@ public class VehicleApp {
 }
 
 class Vehicle {
-    private String name;
+    private String model;
     private String color;
-    private int yearOfProduction;
-    private int enginePower;
+    private int modelYear;
+    private int power;
     private double price;
 
-    public String getName() {
-        return name;
+    public String getModel() {
+        return model;
     }
 
     public String getColor() {
@@ -71,11 +71,11 @@ class Vehicle {
     }
 
     public int getYearOfProduction() {
-        return yearOfProduction;
+        return modelYear;
     }
 
-    public int getEnginePower() {
-        return enginePower;
+    public int getPower() {
+        return power;
     }
 
     public double getPrice() {
@@ -85,10 +85,10 @@ class Vehicle {
     @Override
     public String toString() {
         return "Vehicle{" +
-                "name='" + name + '\'' +
+                "model='" + model + '\'' +
                 ", color='" + color + '\'' +
-                ", yearOfProduction=" + yearOfProduction +
-                ", enginePower=" + enginePower +
+                ", yearOfProduction=" + modelYear +
+                ", enginePower=" + power +
                 ", price=" + price +
                 '}';
     }
