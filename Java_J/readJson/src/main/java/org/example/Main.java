@@ -32,14 +32,17 @@ public class Main {
                 String model = (String) car.get("model");
                 System.out.println(model);
 
-                String modelYear = (String) car.get("modelYear");
+                long modelYear = (long) car.get("modelYear");
                 System.out.println(modelYear);
 
-                String power = (String) car.get("power");
+                long power = (long) car.get("power");
                 System.out.println(power);
 
                 String color = (String) car.get("color");
                 System.out.println(color);
+
+                String img = (String) car.get("img");
+                System.out.println(img);
 
             }
         }  catch (IOException | ParseException e) {
