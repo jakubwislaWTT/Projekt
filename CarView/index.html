@@ -4,22 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App</title>
+    <title>index</title>
     <link rel="stylesheet" href="style.css">
     
 
     
 </head>
 <body>
+   
     <div id="mid">
-        <script src="app.js"></script>
-        <div id="mid-box1">id:</div>
-        <div id="mid-box2">model:</div>
-        <div id="mid-box3">modelYear:ssss</div>
-        <div id="mid-box4">power:</div>
-        <div id="mid-box5">color:</div>
-        <!-- <div id="mid-box-img">zdjecie</div>!-->
-        
+        <div id="tableContainer"></div>
+
+        <script>
+           
+                fetch('http://localhost:3000/allVehicles')
+                .then(response => response.json())             
+                .then((cars) => {
+                  
+                    console.log(cars);
+                    let out = "<table>";
+                        out += `
+                        <tr>
+                                <th>Car id</th>
+                                <th>Car model</th>
+                                <th>Car modelyear</th>
+                                <th>Car power</th>
+                                <th>Car color</th>
+                                <th>Car img</th>
+                            </tr>
+                        `;
+                        cars.forEach(car => {
+                        out += `
+                         
+                            <tr>
+                                <td>${car.id}</td>
+                                <td>${car.model}</td>
+                                <td>${car.modelYear}</td>
+                                <td>${car.power}KW</td>
+                                <td>${car.color}</td>
+                                <td>${car.img}</td>
+                            </tr>
+                        `;
+                    });
+                    out += "</table>";
+    
+                    const tableContainer = document.getElementById("tableContainer");
+                    tableContainer.innerHTML = out;
+                });
+
+           
+             
+        </script>
     </div>
 </body>
 </html>
