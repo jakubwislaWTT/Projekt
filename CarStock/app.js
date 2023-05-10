@@ -1,7 +1,9 @@
 const express =  require('express');
 const app = express();
+const cors = require('cors');
 // (fs) służy do obsługi operacji plikowych 
 const fs = require('fs');
+app.use(cors());
 app.get('/vehicle/:id', (req, res) => {
     const carsData = fs.readFileSync('./data.json');
     const cars = JSON.parse(carsData);
