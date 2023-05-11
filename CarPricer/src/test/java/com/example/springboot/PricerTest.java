@@ -21,4 +21,9 @@ public class PricerTest {
 	@Autowired
 	private MockMvc mvc;
 
+	@Test
+	public void getHello() throws Exception {
+		mvc.perform(MockMvcRequestBuilders.get("/priceFor/FM_01").accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
+	}
 }
