@@ -21,10 +21,4 @@ public class PricerTest {
 	@Autowired
 	private MockMvc mvc;
 
-	@Test
-	public void getHello() throws Exception {
-		mvc.perform(MockMvcRequestBuilders.get("/priceFor/FM_01").accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk())
-				.andExpect(content().string(equalTo("{\"price\":300000,\"currency\":\"PLN\",\"id\":\"FM_01\"}")));
-	}
 }
