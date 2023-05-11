@@ -5,7 +5,7 @@
 	  "modelYear": 2022,
 	  "power": 220,
 	  "color": "red",
-	  "img": "https://fajnyobrazek.mustanga.html"
+	  "img": "https://carsguide-res.cloudinary.com/image/upload/f_auto,fl_lossy,q_auto,t_cg_hero_large/v1/editorial/2022-Ford-Mustang-Shelby-GT500KR-1001x565%20%281%29.jpg"
 	},
 	{
 	  "id": "FE_01",
@@ -13,7 +13,7 @@
 	  "modelYear": 1980,
 	  "power": 135,
 	  "color": "red",
-	  "img": "https://fajnyobrazek.ferrari.html"
+	  "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/2003_Enzo_Ferrari_at_Greenwich_2018%2C_front_right.jpg/1200px-2003_Enzo_Ferrari_at_Greenwich_2018%2C_front_right.jpg"
 	},
 	{
 	  "id": "LU_01",
@@ -21,6 +21,6 @@
 	  "modelYear": 2020,
 	  "power": 220,
 	  "color": "yellow",
-	  "img": "https://fajnyobrazek.lamborghini.html"
+	  "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Lamborghini_Urus_19.09.20_JM_%282%29_%28cropped%29.jpg/1200px-Lamborghini_Urus_19.09.20_JM_%282%29_%28cropped%29.jpg"
 	}
   ]

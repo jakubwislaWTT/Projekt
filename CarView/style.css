@@ -1,21 +1,63 @@
 body{
-    font-family: serif;
-    background-color: lightgray;
-    text-align: center;
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: 'Roboto', sans-serif;
 }
 
-#mid{
+
+/* #mid{
     background-color: lightgray;
-    width: 500px;
-    height: 600px;
     border-radius: 10px;
     color: white;
     margin: auto;
     display: flex;
+    text-align: center;
     flex-direction: column;
     font-size: 25px;
+} */
+#data_table{
+    margin: auto;
+    text-align: center;
+    color: white;
+    border-collapse: collapse;
 }
-#mid-box1,#mid-box2,#mid-box3,#mid-box4,#mid-box5{
+
+#data_table td,th{
+    border: 0.5px solid white;
+    padding: 10px;
+}
+#data_table th{
+    text-transform: uppercase;
+}
+#data_table td{
+    font-weight: bold;
+}
+.display_img {
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center; 
+    transition: 1s;
+}
+/* tu jutro robota */
+.display_img:hover {
+    transform: scale(1.1);
+    display: flex; 
+    background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+    background: linear-gradient(to right, #25c481, #25b7c4);
+}
+#data_table td:hover{
+   background-color: white;
+   color: black;
+}
+
+
+
+
+/* .display_img:hover{
+    transition: 1s;   
+} */
+/* #mid-box1,#mid-box2,#mid-box3,#mid-box4,#mid-box5{
     padding: 30px;
     width: 60%;
     margin: auto;
@@ -46,4 +88,4 @@ body{
 #mid-box1:hover,#mid-box2:hover,#mid-box3:hover,#mid-box4:hover,#mid-box5:hover{
    transition: 0.2s;
    padding: 35px;
-}
+} */

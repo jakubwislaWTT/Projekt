@@ -22,7 +22,7 @@
                 .then((cars) => {
                   
                     console.log(cars);
-                    let out = "<table>";
+                    let out = "<table id='data_table'>";
                         out += `
                         <tr>
                                 <th>Car id</th>
@@ -30,7 +30,7 @@
                                 <th>Car modelyear</th>
                                 <th>Car power</th>
                                 <th>Car color</th>
-                                <th>Car img</th>
+                                <th>Car image</th>
                             </tr>
                         `;
                         cars.forEach(car => {
@@ -42,7 +42,7 @@
                                 <td>${car.modelYear}</td>
                                 <td>${car.power}KW</td>
                                 <td>${car.color}</td>
-                                <td>${car.img}</td>
+                                <td><img src="${car.img}" class="display_img"></td>
                             </tr>
                         `;
                     });
@@ -50,11 +50,10 @@
     
                     const tableContainer = document.getElementById("tableContainer");
                     tableContainer.innerHTML = out;
-                });
-
-           
-             
+                });             
         </script>
+        
+        
     </div>
 </body>
 </html>
