@@ -1,5 +1,4 @@
 package org.example;
-
 class Vehicle {
     private String model;
     private String color;
