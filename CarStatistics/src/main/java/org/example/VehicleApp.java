@@ -8,15 +8,18 @@ import java.util.*;
 import java.util.stream.Collectors;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import java.io.IOException;
+
 
 public class VehicleApp {
     private static final String API_URL = "http://localhost:3000/allVehicles";
-
+    private static final String API_PRICES_URL = "http://localhost:4000/allPrices";
     public static void main(String[] args) throws Exception {
 
         String json = getJSONFromAPI();
 
-        List<Vehicle> vehicles = new Gson().fromJson(json, new TypeToken<List<Vehicle>>() {}.getType());
+        List<Vehicle> vehicles = new Gson().fromJson(json, new TypeToken<List<Vehicle>>() {
+        }.getType());
 
         Optional<Vehicle> mostPowerfulVehicle = vehicles.stream()
                 .max(Comparator.comparingInt(Vehicle::getPower));
@@ -38,7 +41,7 @@ public class VehicleApp {
         vehicles.forEach(vehicle -> System.out.println(vehicle.getModel() + " - " + vehicle.getPrice()));
     }
 
-    private static String getJSONFromAPI() throws Exception{
+    private static String getJSONFromAPI() throws Exception {
         URI uri = new URI(API_URL);
         HttpURLConnection con = (HttpURLConnection) uri.toURL().openConnection();
         con.setRequestMethod("GET");
@@ -48,15 +51,17 @@ public class VehicleApp {
             throw new RuntimeException("Błąd: " + responseCode);
         }
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-        String inputLine;
         StringBuilder content = new StringBuilder();
-        while ((inputLine = in.readLine()) != null) {
-            content.append(inputLine);
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+            String inputLine;
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Błąd odczytu danych z API", e);
+        } finally {
+            con.disconnect();
         }
-        in.close();
-        con.disconnect();
-
         return content.toString();
     }
 
