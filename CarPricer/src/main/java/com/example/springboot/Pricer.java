@@ -27,39 +27,39 @@ public class Pricer {
 		try {
 			try (InputStream input = url.openStream()) {
 				InputStreamReader isr = new InputStreamReader(input);
-				BufferedReader read = new BufferedReader(isr);
-				JsonArray arr = (JsonArray) JsonParser.parseReader(read);
+				JsonArray arr = gson.fromJson(isr, JsonArray.class);
 
 
 				URL url2 = new URI("http://127.0.0.1:8000/price").toURL();
-				InputStream input2 = url2.openStream();
-				InputStreamReader isr2 = new InputStreamReader(input2);
-				BufferedReader read2 = new BufferedReader(isr2);
-				JsonArray arr2 = (JsonArray) JsonParser.parseReader(read2);
+
+				try(InputStream input2 = url2.openStream()){
+					InputStreamReader isr2 = new InputStreamReader(input2);
+					JsonArray arr2 = gson.fromJson(isr2, JsonArray.class);
 
 
-				for (Object o : arr) {
+					for (Object o : arr) {
 
-					JsonObject car = (JsonObject) o;
+						JsonObject car = (JsonObject) o;
 
-					JsonElement id = car.get("id");
-					if(Objects.equals(gson.fromJson(carId, JsonElement.class), id)) {
+						JsonElement id = car.get("id");
+						if(Objects.equals(gson.fromJson(carId, JsonElement.class), id)) {
 
-						for(Object a : arr2){
-							JsonObject pricer = (JsonObject) a;
+							for(Object a : arr2){
+								JsonObject pricer = (JsonObject) a;
 
-							JsonElement id2 = pricer.get("id");
+								JsonElement id2 = pricer.get("id");
 
-							if(Objects.equals(id, id2)){
-								JsonElement price = pricer.get("price");
+								if(Objects.equals(id, id2)){
+									JsonElement price = pricer.get("price");
 
-								JsonElement currency = pricer.get("currency");
+									JsonElement currency = pricer.get("currency");
 
-								car.add("price",price);
-								car.add("currency",currency);
+									car.add("price",price);
+									car.add("currency",currency);
+								}
 							}
+							return car;
 						}
-						return car;
 					}
 				}
 			}
