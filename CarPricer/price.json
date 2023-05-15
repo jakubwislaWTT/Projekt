@@ -1,0 +1,17 @@
+[
+	{
+	  "id": "FM_01",
+	  "price": 300000,
+      "currency" : "PLN"
+	},
+	{
+	  "id": "FE_01",
+	  "price": 10000000,
+      "currency" : "PLN"
+	},
+	{
+	  "id": "LU_01",
+	  "price": 1400000,
+      "currency" : "PLN"
+	}
+  ]
