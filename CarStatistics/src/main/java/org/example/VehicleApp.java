@@ -37,7 +37,7 @@ public class VehicleApp {
 
         System.out.print("\n");
 
-        vehicles.forEach(vehicle -> System.out.println(vehicle.getModel() + " - " + vehicle.getPrice() + " " + vehicle.getCurrency()));
+        vehicles.forEach(vehicle -> System.out.println(vehicle.getModel() + " - " + String.format("%.2f" , vehicle.getPrice()) + " " + vehicle.getCurrency()));
     }
 
     private static void assignPricesToVehicles(List<Vehicle> vehicles) throws Exception {
