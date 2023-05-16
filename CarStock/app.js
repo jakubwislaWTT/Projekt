@@ -8,6 +8,9 @@ app.get('/vehicle/:id', (req, res) => {
     const carsData = fs.readFileSync('./data.json');
     const cars = JSON.parse(carsData);
     const car = cars.find(car => car.id == req.params.id); //   pozwala na pobieranie wartości z parametrów ścieżki URL (id) przez funkcje parms
+    const currentURL = req.originalUrl;
+    console.log(currentURL);
+    
     res.send({
         id: car.id,
         model: car.model,

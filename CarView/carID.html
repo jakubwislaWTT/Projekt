@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    <link rel="stylesheet" href="style.css">
+
+
+
+</head>
+
+<body>
+
+    <div id="mid">
+
+        <input type="text" id="car-id-input" >
+        <input type="submit" id="button1">
+
+        <div id="tableContainer"></div>
+
+        <script>
+
+
+            let button = document.querySelector("#button1");
+            
+            button.addEventListener("click", () => {
+                let URL_id = document.querySelector("#car-id-input").value;
+                URL_id = URL_id.toUpperCase();
+                //how to handle 500
+                //if statscode == 500
+                console.log(URL_id);
+               
+                fetch(`http://localhost:3000/vehicle/${URL_id}`)
+                
+                    .then(response => response.json())
+                    .then((car) => {
+                        console.log(car);
+
+                        
+
+                        let out =
+                        `<table id='data_table'>                  
+                            <tr>
+                                <th>Car id</th>
+                                <th>Car model</th>
+                                <th>Car modelyear</th>
+                                <th>Car power</th>
+                                <th>Car color</th>
+                                <th>Car image</th>
+                            </tr>                    
+                            <tr>
+                                <td>${car.id}</td>
+                                <td>${car.model}</td>
+                                <td>${car.modelYear}</td>
+                                <td>${car.power}KW</td>
+                                <td>${car.color}</td>
+                                <td><img src="${car.img}" class="display_img"></td>
+                            </tr>             
+                        </table>;
+                        `;
+                        const tableContainer = document.getElementById("tableContainer");
+                        tableContainer.innerHTML = out;
+                    })
+                    .catch(error =>{
+                        if (error === 500)
+                        console.log("error");
+                    })
+                
+            });   
+         
+                 
+        </script>
+
+
+    </div>
+</body>
+
+</html>

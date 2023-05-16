@@ -44,7 +44,7 @@ body{
     transform: scale(1.1);
     display: flex; 
     background: -webkit-linear-gradient(left, #25c481, #25b7c4);
-    background: linear-gradient(to right, #25c481, #25b7c4);
+    background: linear-gradient( right, #25c481, #25b7c4);
 }
 #data_table td:hover{
    background-color: white;
