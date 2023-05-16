@@ -2,6 +2,7 @@ package org.example;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URI;
 import java.util.*;
@@ -9,6 +10,7 @@ import java.util.stream.Collectors;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class VehicleApp {
     private static final String API_URL = "http://localhost:3000/allVehicles";
@@ -37,7 +39,10 @@ public class VehicleApp {
 
         System.out.print("\n");
 
-        vehicles.forEach(vehicle -> System.out.println(vehicle.getModel() + " - " + vehicle.getPrice() + " " + vehicle.getCurrency()));
+
+
+        vehicles.forEach(
+                vehicle -> System.out.println(vehicle.getModel() + " - " + new BigDecimal(vehicle.getPrice()).toBigInteger() + " " + vehicle.getCurrency()));
     }
 
     private static void assignPricesToVehicles(List<Vehicle> vehicles) throws Exception {
